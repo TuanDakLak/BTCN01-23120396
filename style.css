@@ -8,3 +8,47 @@ body {
   margin: 5px;
 }
 
+.container-header {
+  height: 66px;
+  margin-bottom: 10px;
+}
+.header {
+  background: linear-gradient(to bottom, #5496e3, #7da4dd);
+  color: rgb(181, 205, 226);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 5px;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+
+}
+
+.header p {
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000, 2px 2px 4px #00000080;
+}
+
+.nav-bar {
+  background-color: #adc6ec;
+  width: 50%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: -8px;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nav-bar a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+  margin: 0 15px;
+}       
