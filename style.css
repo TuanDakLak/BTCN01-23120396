@@ -38,7 +38,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   margin-top: -8px;
   border-radius: 5px;
   margin-left: auto;
@@ -66,6 +66,9 @@ body {
   font-size: 1.1rem;
   color: #dfa127;
   height: 33px;
+  border-radius: 5px;
+  border: 1px solid #dfa127;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 .nav-bar-footer a {
   color: #dfa127;
@@ -83,6 +86,6 @@ body {
 }
 
 .border-footer {
-  border-left: 1px solid #dfa127; 
+  border-left: 1px solid #dfa127;
   border-right: 1px solid #dfa127;
 }
