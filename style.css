@@ -151,8 +151,20 @@ body {
   background-color: #e77f01;
 }
 
-.closed .news-header
-{
+.closed .news-header {
   background-color: #edc491;
   color: #a58fa1;
+}
+
+.drag {
+  user-select: none;
+}
+.sidebar
+{
+  position: relative;
+}
+.news-box.dragging {
+  opacity: 0.5;
+  cursor: grabbing;
+  background: #e9d5bc;
 }
