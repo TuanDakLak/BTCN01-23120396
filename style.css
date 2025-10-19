@@ -102,7 +102,6 @@ body {
   width: 256px;
   height: 400px;
   margin-right: 10px;
-  background-color: yellow;
   margin-top: 5px;
 }
 .body-content {
@@ -110,14 +109,14 @@ body {
   flex-direction: column;
 }
 .process-text {
-  /* width: calc(100% - 266px); */
+  width: calc(100% - 266px);
   margin-top: 5px;
   width: 1014px;
   height: 100%;
   background-color: red;
 }
 .drag-drop {
-  /* width: calc(100% - 266px); */
+  width: calc(100% - 266px);
   margin-top: 5px;
 
   width: 1014px;
@@ -125,4 +124,29 @@ body {
   height: 100%;
   background-color: rgb(45, 145, 45);
   margin-bottom: 5px;
+}
+
+.news-header {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 1.5rem;
+  padding: 5px;
+}
+
+.news-box {
+  margin-bottom: 5px;
+}
+
+.news-content {
+  border-left: 1px solid rgb(12, 89, 141);
+  border-right: 1px solid rgb(12, 89, 141);
+  border-bottom: 1px solid rgb(12, 89, 141);
+  border-radius: 0 0 5px 5px;
+  padding: 5px;
+  color: rgb(12, 89, 141);
+}
+
+.open .news-header {
+  background-color: #e77f01;
 }
