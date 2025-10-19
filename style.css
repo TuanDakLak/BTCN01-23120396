@@ -53,7 +53,7 @@ body {
   margin: 0 15px;
 }       
 
-.nav-bar a:hover
+.nav-link:hover
 {
   color: rgb(225, 225, 54);
   font-weight: 500;
