@@ -48,7 +48,13 @@ body {
 
 .nav-bar a {
   text-decoration: none;
-  color: black;
+  color: rgb(27, 115, 163);
   font-size: 1.2rem;
   margin: 0 15px;
 }       
+
+.nav-bar a:hover
+{
+  color: rgb(225, 225, 54);
+  font-weight: 500;
+}
