@@ -125,7 +125,9 @@ body {
   margin-top: 5px;
   width: 1014px;
   min-height: 300px;
+  border-radius: 5px;
   margin-bottom: 5px;
+  border: 1px solid black;
 }
 
 .news-header {
@@ -292,5 +294,5 @@ input[type="color"]:focus {
   align-items: center;
   justify-content: space-around;
   border-radius: 5px 5px 0 0;
+  padding: 10px 5px;
 }
-

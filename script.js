@@ -148,6 +148,7 @@ $underlineChk.on("change", function () {
   );
 });
 
+
 $("#btnHighlight").click(function () {
   let pattern = $("#textInput").val();
   if (!pattern) return;
@@ -171,12 +172,9 @@ $("#btnHighlight").click(function () {
 
   let style = `style="color:${color}; background:${bgColor}; ${bold} ${italic} ${underline}"`;
 
-  let currentHtml = $content.html();
-  currentHtml = currentHtml.replace(
-    /<span class="hl"[^>]*>(.*?)<\/span>/gi,
-    "$1"
-  );
-  let newHtml = currentHtml.replace(regex, (match) => {
+  let textContent = $content.text();
+  
+  let newHtml = textContent.replace(regex, (match) => {
     return `<span class="hl" ${style}>${match}</span>`;
   });
 
