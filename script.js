@@ -2,9 +2,7 @@ const navLinks = $(".nav-bar .nav-link");
 const footerLinks = $(".nav-bar-footer .nav-link-footer");
 
 navLinks.each(function (index) {
-
   $(this).mouseenter(function () {
-
     footerLinks.removeClass("hovered");
     footerLinks.eq(index).addClass("hovered");
   });
@@ -148,7 +146,6 @@ $underlineChk.on("change", function () {
   );
 });
 
-
 $("#btnHighlight").click(function () {
   let pattern = $("#textInput").val();
   if (!pattern) return;
@@ -173,7 +170,7 @@ $("#btnHighlight").click(function () {
   let style = `style="color:${color}; background:${bgColor}; ${bold} ${italic} ${underline}"`;
 
   let textContent = $content.text();
-  
+
   let newHtml = textContent.replace(regex, (match) => {
     return `<span class="hl" ${style}>${match}</span>`;
   });
@@ -202,4 +199,14 @@ $btnDelete.click(function () {
   let newHtml = currentHtml.replace(regex, "");
 
   $content.html(newHtml);
+});
+
+$(".AddNew-button").click(function () {
+  let selected = $("#animalSelect").val();
+  let parts = selected.split(",");
+  let icon = parts[0];
+  let name = parts[1];
+
+  let $item = $("<div class='animal-item'></div>").text(icon + " " + name);
+  $(".animals-grid").append($item);
 });

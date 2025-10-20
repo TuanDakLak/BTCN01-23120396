@@ -298,8 +298,7 @@ input[type="color"]:focus {
   padding: 10px 5px;
 }
 
-#animalSelect
-{
+#animalSelect {
   padding: 10px 15px;
   align-items: center;
   user-select: none;
@@ -308,14 +307,35 @@ input[type="color"]:focus {
   outline: none;
 }
 
-.AddNew-button
-{
-    background-color: #0771f3;
-    border: none;
-    border-radius: 20px;
-    width: 90px;
-    height: 40px;
-    color: white;
-    font-size: 1.1rem;
-    margin-right: 400px;
+.AddNew-button {
+  background: linear-gradient(to bottom, #66a3e8 30%, #3078e2 100%);
+  border: none;
+  border-radius: 20px;
+  width: 90px;
+  height: 40px;
+  color: white;
+  font-size: 1.1rem;
+  margin-right: 400px;
+}
+
+.AddNew-button:hover {
+  background: linear-gradient(to bottom, #3078e2 30%, #66a3e8 70%);
+}
+
+.animals-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.animal-item {
+  width: 200px;
+  height: 150px;
+  font-size: 30px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  background: linear-gradient(to left, #3078e2, #66a3e8, #3078e2);
+  border-radius: 6px;
 }
