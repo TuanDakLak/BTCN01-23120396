@@ -163,16 +163,12 @@ body {
   position: relative;
 }
 
-.drag-clone {
-  opacity: 0.6;
+.ghost {
   position: absolute;
-  z-index: 9999;
-  width: 100%;
+  pointer-events: none;
+  opacity: 0.75;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+  z-index: 999;
 }
 
-.swap-placeholder {
-  border: 2px dashed #888;
-  border-radius: 4px;
-  height: 60px;
-  margin: 6px 0;
-}
+
