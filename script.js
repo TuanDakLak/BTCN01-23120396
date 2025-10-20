@@ -80,7 +80,8 @@ const $textInput = $("#textInput");
 const $colorInput = $("#colorInput");
 const $bgInput = $("#bgColorInput");
 const $sampleText = $("#sampleText");
-const $processContent = $(".process-content");
+const $content = $(".process-text-inner");
+const originalText = $content.html();
 
 const $editBtn = $(".edit-sampleText");
 const $btnHighlight = $("#btnHighlight");
@@ -131,23 +132,38 @@ $underlineChk.on("change", function () {
   );
 });
 
-
-
-$btnHighlight.on("click", function () {
-  const pattern = $textInput.val();
+$("#btnHighlight").click(function () {
+  let pattern = $("#textInput").val();
   if (!pattern) return;
 
-  const regex = new RegExp(`(${pattern})`, "gi");
-  let html = $processContent.html();
+  let flags = "gi";
+  let regex;
 
-  html = html.replace(regex, `<span class="hl">$1</span>`);
-  $processContent.html(html);
+  try {
+    regex = new RegExp(pattern, flags);
+  } catch (e) {
+    alert("Regex không hợp lệ!");
+    return;
+  }
 
-  $(".hl").css({
-    color: $sampleText.css("color"),
-    "font-weight": $sampleText.css("font-weight"),
-    "font-style": $sampleText.css("font-style"),
-    "text-decoration": $sampleText.css("text-decoration"),
-    "background-color": $sampleText.css("background-color"),
+  // Lấy style từ Sample
+  let color = $("#colorInput").val();
+  let bgColor = $("#bgColorInput").val();
+  let bold = $("#boldChk").is(":checked") ? "font-weight:bold;" : "";
+  let italic = $("#italicChk").is(":checked") ? "font-style:italic;" : "";
+  let underline = $("#underlineChk").is(":checked")
+    ? "text-decoration:underline;"
+    : "";
+
+  let style = `style="color:${color}; background:${bgColor}; ${bold} ${italic} ${underline}"`;
+
+  let newHtml = originalText.replace(regex, (match) => {
+    return `<span class="hl" ${style}>${match}</span>`;
   });
+
+  $content.html(newHtml);
+});
+
+$("#btnReset").click(function () {
+  $content.html(originalText);
 });
