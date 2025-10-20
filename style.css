@@ -159,12 +159,20 @@ body {
 .drag {
   user-select: none;
 }
-.sidebar
-{
+.sidebar {
   position: relative;
 }
-.news-box.dragging {
-  opacity: 0.5;
-  cursor: grabbing;
-  background: #e9d5bc;
+
+.drag-clone {
+  opacity: 0.6;
+  position: absolute;
+  z-index: 9999;
+  width: 100%;
+}
+
+.swap-placeholder {
+  border: 2px dashed #888;
+  border-radius: 4px;
+  height: 60px;
+  margin: 6px 0;
 }

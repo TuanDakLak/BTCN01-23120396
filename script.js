@@ -21,3 +21,4 @@ newsBoxes.forEach((box) => {
     }
   });
 });
+
