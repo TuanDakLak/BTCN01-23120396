@@ -76,57 +76,53 @@ function onMouseUp() {
   document.removeEventListener("mouseup", onMouseUp);
 }
 
-$(document).ready(function () {
-  const $textInput = $("#textInput");
-  const $colorInput = $("#colorInput");
-  const $bgcolorInput = $("#bgColorInput");
-  const $sampleText = $("#sampleText");
-  const $processContent = $(".process-content");
+const $textInput = $("#textInput");
+const $colorInput = $("#colorInput");
+const $bgcolorInput = $("#bgColorInput");
+const $sampleText = $("#sampleText");
+const $processContent = $(".process-content");
 
-  const $editBtn = $(".edit-sampleText");
-  const $btnHighlight = $("#btnHighlight");
-  const $btnDelete = $("#btnDelete");
-  const $btnReset = $("#btnReset");
+const $editBtn = $(".edit-sampleText");
+const $btnHighlight = $("#btnHighlight");
+const $btnDelete = $("#btnDelete");
+const $btnReset = $("#btnReset");
 
-  const $pop = $("#popup");
-  const $boldChk = $("#boldChk");
-  const $italicChk = $("#italicChk");
-  const $underlineChk = $("#underlineChk");
+const $pop = $("#popup");
+const $boldChk = $("#boldChk");
+const $italicChk = $("#italicChk");
+const $underlineChk = $("#underlineChk");
 
-  function togglePopup() {
-    $pop.toggle();
+function togglePopup() {
+  $pop.toggle();
+}
+
+$(document).on("click", function (event) {
+  if (
+    !$(event.target).closest($pop).length &&
+    !$(event.target).closest($editBtn).length
+  ) {
+    $pop.css("display", "none");
   }
+});
 
-  $editBtn.on("click", togglePopup);
-  function togglePopup() {
-    $pop.toggle();
-  }
+$colorInput.on("input", function () {
+  $sampleText.css("color", $colorInput.val());
+});
 
-  $btnHighlight.on("click", togglePopup);
-  $btnDelete.on("click", togglePopup);
+$boldChk.on("change", function () {
+  $sampleText.css("font-weight", $boldChk.prop("checked") ? "bold" : "normal");
+});
 
-  $colorInput.on("input", function () {
-    $sampleText.css("color", $colorInput.val());
-  });
+$italicChk.on("change", function () {
+  $sampleText.css(
+    "font-style",
+    $italicChk.prop("checked") ? "italic" : "normal"
+  );
+});
 
-  $boldChk.on("change", function () {
-    $sampleText.css(
-      "font-weight",
-      $boldChk.prop("checked") ? "bold" : "normal"
-    );
-  });
-
-  $italicChk.on("change", function () {
-    $sampleText.css(
-      "font-style",
-      $italicChk.prop("checked") ? "italic" : "normal"
-    );
-  });
-
-  $underlineChk.on("change", function () {
-    $sampleText.css(
-      "text-decoration",
-      $underlineChk.prop("checked") ? "underline" : "none"
-    );
-  });
+$underlineChk.on("change", function () {
+  $sampleText.css(
+    "text-decoration",
+    $underlineChk.prop("checked") ? "underline" : "none"
+  );
 });
