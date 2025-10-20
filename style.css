@@ -186,11 +186,37 @@ body {
   justify-content: space-around;
 }
 
+.edit-text *
+{
+  margin: 5px;
+}
+
+.edit-text button
+{
+  width: 80px;
+  height: 25px;
+  border-radius: 10px;
+  background-color: #0c62e2dc;
+  border: none;
+  color: white;
+}
+
+.edit-color *
+{
+  margin: 5px;
+}
+
 .edit-color {
   display: flex;
 }
 
-.process-text
+.SampleText
+{
+  font-size: 1.1rem;
+  align-self: center;
+}
+
+.process-text-content
 {
   font-size: 1.3rem;
   color: white;
