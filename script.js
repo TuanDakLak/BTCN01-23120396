@@ -207,6 +207,12 @@ $(".AddNew-button").click(function () {
   let icon = parts[0];
   let name = parts[1];
 
-  let $item = $("<div class='animal-item'></div>").text(icon + " " + name);
-  $(".animals-grid").append($item);
+  let $wrap = $(`
+    <div class="animal-wrap">
+      <div class="animal-item">${icon}</div>
+      <div class="animal-name">${name}</div>
+    </div>
+  `);
+
+  $(".animals-grid").append($wrap);
 });

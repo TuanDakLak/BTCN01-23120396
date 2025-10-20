@@ -325,17 +325,31 @@ input[type="color"]:focus {
 .animals-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
+  gap: 15px;
   margin-top: 15px;
 }
 
+.animal-wrap {
+  text-align: center;
+}
+
 .animal-item {
-  width: 200px;
-  height: 150px;
-  font-size: 30px;
-  border: 1px solid #ccc;
+  height: 120px;  
+  font-size: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 10px;
   text-align: center;
   background: linear-gradient(to left, #3078e2, #66a3e8, #3078e2);
-  border-radius: 6px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  color: white;
+  cursor: grab;
+}
+
+.animal-name {
+  margin-top: 8px;
+  font-size: 16px;
+  color: #222;
 }
