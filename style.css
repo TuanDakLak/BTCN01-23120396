@@ -215,6 +215,7 @@ body {
   outline: none;
   padding: 1px;
   align-self: center;
+  cursor: pointer;
 }
 
 
@@ -244,4 +245,32 @@ input[type="color"]:focus {
   outline: none;
   background-color: #66ccff;
   box-shadow: 0 0 6px rgba(102, 204, 255, 0.7);
+}
+
+
+.popup {
+  position: absolute;
+  top: 145px;
+  right: -15px;
+  width: 170px;
+  padding: 8px;
+  background: rgb(147, 215, 244);
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+  /* display: none; */
+  animation: fade .15s ease-out;
+}
+
+.arrow-up {
+  position: absolute;
+  top: -13px;
+  right: 66px;
+
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid rgb(147, 215, 244);
+  filter: drop-shadow(0 -1px 1px rgba(0,0,0,0.25));
 }
