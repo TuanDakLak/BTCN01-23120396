@@ -237,8 +237,9 @@ body {
   align-self: center;
 }
 .SampleText {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   align-self: center;
+  background-color: #FFFF00;
 }
 
 .process-text-content {
@@ -263,7 +264,7 @@ input[type="color"]:focus {
   border-radius: 6px;
   border: 1px solid #ccc;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
-  display: none;
+  /* display: none; */
   animation: fade 0.15s ease-out;
 }
 

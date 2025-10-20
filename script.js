@@ -78,7 +78,7 @@ function onMouseUp() {
 
 const $textInput = $("#textInput");
 const $colorInput = $("#colorInput");
-const $bgcolorInput = $("#bgColorInput");
+const $bgInput = $("#bgColorInput");
 const $sampleText = $("#sampleText");
 const $processContent = $(".process-content");
 
@@ -109,6 +109,10 @@ $colorInput.on("input", function () {
   $sampleText.css("color", $colorInput.val());
 });
 
+$bgInput.on("input", function () {
+  $sampleText.css("background-color", $bgInput.val());
+});
+
 $boldChk.on("change", function () {
   $sampleText.css("font-weight", $boldChk.prop("checked") ? "bold" : "normal");
 });
@@ -125,4 +129,25 @@ $underlineChk.on("change", function () {
     "text-decoration",
     $underlineChk.prop("checked") ? "underline" : "none"
   );
+});
+
+
+
+$btnHighlight.on("click", function () {
+  const pattern = $textInput.val();
+  if (!pattern) return;
+
+  const regex = new RegExp(`(${pattern})`, "gi");
+  let html = $processContent.html();
+
+  html = html.replace(regex, `<span class="hl">$1</span>`);
+  $processContent.html(html);
+
+  $(".hl").css({
+    color: $sampleText.css("color"),
+    "font-weight": $sampleText.css("font-weight"),
+    "font-style": $sampleText.css("font-style"),
+    "text-decoration": $sampleText.css("text-decoration"),
+    "background-color": $sampleText.css("background-color"),
+  });
 });
