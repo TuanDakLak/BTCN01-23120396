@@ -234,7 +234,6 @@ grid.on("mousedown", ".animal-item", function (e) {
   ghostAnimal = $(this).clone().addClass("ghost-drag");
   $("body").append(ghostAnimal);
 
-  // Ghost nằm đúng tại vị trí ban đầu, không bị lệch
   ghostAnimal.css({
     left: rect.left + window.scrollX,
     top: rect.top + window.scrollY,
@@ -273,7 +272,6 @@ function onDrag(e) {
       }
     });
 }
-
 function onDrop() {
   $(document).off("mousemove.drag mouseup.drag");
 
