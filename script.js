@@ -1,27 +1,24 @@
-const newsBoxes = document.querySelectorAll(".news-box");
+const $newsBoxes = $(".news-box");
 
-newsBoxes.forEach((box) => {
-  const toggleBtn = box.querySelector(".toggle");
+  $newsBoxes.each(function() {
+    const $box = $(this);
+    const $toggleBtn = $box.find(".toggle");
 
-  toggleBtn.addEventListener("click", () => {
-    const isOpen = box.classList.contains("open");
+    $toggleBtn.on("click", function() {
+      const isOpen = $box.hasClass("open");
 
-    if (isOpen) {
-      box.classList.remove("open");
-      box.classList.add("closed");
-      toggleBtn.textContent = "►";
-      const content = box.querySelector(".news-content");
-      content.style.display = "none";
-    } else {
-      box.classList.remove("closed");
-      box.classList.add("open");
-      toggleBtn.textContent = "↓";
-      const content = box.querySelector(".news-content");
-      content.style.display = "block";
-    }
+      if (isOpen) {
+        $box.removeClass("open").addClass("closed");
+        $toggleBtn.text("►");
+        $box.find(".news-content").hide();
+      } else {
+        $box.removeClass("closed").addClass("open");
+        $toggleBtn.text("↓");
+        $box.find(".news-content").show();
+      }
+    });
   });
-});
-
+  
 //Drag And Drop
 const aside = document.querySelector(".sidebar");
 let draggingBox = null;

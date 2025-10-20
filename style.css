@@ -157,6 +157,11 @@ body {
   color: #a58fa1;
 }
 
+.news-header *
+{
+  user-select: none;
+}
+
 .drag {
   user-select: none;
 }
