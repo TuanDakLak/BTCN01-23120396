@@ -216,3 +216,73 @@ $(".AddNew-button").click(function () {
 
   $(".animals-grid").append($wrap);
 });
+
+let dragItem = null;
+let ghostAnimal = null;
+let placeholder = null;
+let offsetX = 0,
+  offsetY2 = 0;
+const grid = $(".animals-grid");
+
+grid.on("mousedown", ".animal-item", function (e) {
+  dragItem = $(this).closest(".animal-wrap");
+
+  const rect = dragItem[0].getBoundingClientRect();
+  offsetX = e.clientX - rect.left;
+  offsetY2 = e.clientY - rect.top;
+
+  ghostAnimal = $(this).clone().addClass("ghost-drag");
+  $("body").append(ghostAnimal);
+
+  // Ghost nằm đúng tại vị trí ban đầu, không bị lệch
+  ghostAnimal.css({
+    left: rect.left + window.scrollX,
+    top: rect.top + window.scrollY,
+  });
+
+  $(document).on("mousemove.drag", onDrag);
+  $(document).on("mouseup.drag", onDrop);
+});
+
+function onDrag(e) {
+  ghostAnimal.css({ left: e.pageX - offsetX, top: e.pageY - offsetY2 });
+
+  $(".animal-wrap")
+    .not(dragItem)
+    .not(placeholder)
+    .each(function () {
+      let box = this.getBoundingClientRect();
+      let inside =
+        e.clientX > box.left &&
+        e.clientX < box.right &&
+        e.clientY > box.top &&
+        e.clientY < box.bottom;
+
+      if (inside) {
+        if (!placeholder) {
+          placeholder = $(
+            '<div class="animal-wrap"><div class="placeholder"></div></div>'
+          );
+        }
+        if ($(this).index() > dragItem.index()) {
+          $(this).after(placeholder);
+        } else {
+          $(this).before(placeholder);
+        }
+        return false;
+      }
+    });
+}
+
+function onDrop() {
+  $(document).off("mousemove.drag mouseup.drag");
+
+  ghostAnimal.remove();
+  if (placeholder) {
+    placeholder.replaceWith(dragItem);
+  }
+
+  dragItem = null;
+  ghostAnimal = null;
+  placeholder = null;
+}
