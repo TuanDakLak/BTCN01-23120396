@@ -35,7 +35,7 @@ aside.addEventListener("mousedown", (e) => {
 
   const box = dragIcon.closest(".news-box");
 
-  if (!box.classList.contains("closed")) return;
+  // if (!box.classList.contains("closed")) return;
 
   draggingBox = box;
 
