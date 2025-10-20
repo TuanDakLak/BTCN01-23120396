@@ -359,6 +359,7 @@ input[type="color"]:focus {
   border-radius: 10px;
   height: 120px;
   width: 100%;
+  transition: all 0.3s ease;
 }
 
 .ghost-drag {
@@ -371,7 +372,7 @@ input[type="color"]:focus {
   height: 120px;
   border-radius: 10px;
   z-index: 999;
+  transition: transform 0.2s, opacity 0.2s;
 }
-
 
 
