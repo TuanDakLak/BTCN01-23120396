@@ -35,7 +35,6 @@ aside.addEventListener("mousedown", (e) => {
 
   const box = dragIcon.closest(".news-box");
 
-
   draggingBox = box;
 
   ghost = box.cloneNode(true);
@@ -94,9 +93,18 @@ function onMouseUp() {
   document.removeEventListener("mouseup", onMouseUp);
 }
 
+function popup() {
+  const pop = document.getElementById("popup");
+  if (pop.style.display === "none" || pop.style.display === "") {
+    pop.style.display = "block";
+  } else {
+    pop.style.display = "none";
+  }
+}
+
 const textInput = document.getElementById("textInput");
 const colorInput = document.getElementById("colorInput");
-const bgcolorInput = document.getElementById("bgColorInput")
+const bgcolorInput = document.getElementById("bgColorInput");
 const sampleText = document.getElementById("sampleText");
 const btnHighlight = document.getElementById("btnHighlight");
 const btnDelete = document.getElementById("btnDelete");
