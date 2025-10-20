@@ -116,7 +116,6 @@ function popup() {
   }
 }
 
-
 colorInput.addEventListener("input", () => {
   sampleText.style.color = colorInput.value;
 });
