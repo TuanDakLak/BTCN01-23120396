@@ -286,6 +286,7 @@ input[type="color"]:focus {
 .process-content {
   font-size: 1.5rem;
   padding: 15px 10px;
+  min-height: 100px;
 }
 
 .drag-drop-header {
@@ -295,4 +296,26 @@ input[type="color"]:focus {
   justify-content: space-around;
   border-radius: 5px 5px 0 0;
   padding: 10px 5px;
+}
+
+#animalSelect
+{
+  padding: 10px 15px;
+  align-items: center;
+  user-select: none;
+  border: 1px solid rgb(30, 7, 230);
+  border-radius: 5px;
+  outline: none;
+}
+
+.AddNew-button
+{
+    background-color: #0771f3;
+    border: none;
+    border-radius: 20px;
+    width: 90px;
+    height: 40px;
+    color: white;
+    font-size: 1.1rem;
+    margin-right: 400px;
 }
