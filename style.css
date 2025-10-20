@@ -85,6 +85,11 @@ body {
   background-color: #ce8622;
 }
 
+.nav-link-footer.hovered {
+  color: white;
+  background-color: #ce8622;
+}
+
 .border-footer {
   border-left: 1px solid #dfa127;
   border-right: 1px solid #dfa127;
@@ -96,6 +101,7 @@ body {
   border-bottom: 1px solid #5496e3;
   margin-bottom: 5px;
   display: flex;
+  height: 100%;
 }
 
 .sidebar {
@@ -107,6 +113,7 @@ body {
 .body-content {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 .process-text {
   margin-top: 5px;
@@ -117,8 +124,7 @@ body {
 .drag-drop {
   margin-top: 5px;
   width: 1014px;
-  height: 550px;
-  background-color: rgb(45, 145, 45);
+  min-height: 300px;
   margin-bottom: 5px;
 }
 
@@ -152,8 +158,7 @@ body {
   color: #a58fa1;
 }
 
-.news-header *
-{
+.news-header * {
   user-select: none;
 }
 
@@ -234,7 +239,7 @@ body {
 .SampleText {
   font-size: 1.3rem;
   align-self: center;
-  background-color: #FFFF00;
+  background-color: #ffff00;
 }
 
 .process-text-content {
@@ -280,3 +285,12 @@ input[type="color"]:focus {
   font-size: 1.5rem;
   padding: 15px 10px;
 }
+
+.drag-drop-header {
+  background: linear-gradient(to bottom, #c7daf0, #246cd8);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 5px 5px 0 0;
+}
+

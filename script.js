@@ -1,3 +1,19 @@
+const navLinks = $(".nav-bar .nav-link");
+const footerLinks = $(".nav-bar-footer .nav-link-footer");
+
+navLinks.each(function (index) {
+
+  $(this).mouseenter(function () {
+
+    footerLinks.removeClass("hovered");
+    footerLinks.eq(index).addClass("hovered");
+  });
+
+  $(this).mouseleave(function () {
+    footerLinks.eq(index).removeClass("hovered");
+  });
+});
+
 const $newsBoxes = $(".news-box");
 
 $newsBoxes.each(function () {
