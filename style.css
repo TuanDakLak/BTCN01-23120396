@@ -186,13 +186,11 @@ body {
   justify-content: space-around;
 }
 
-.edit-text *
-{
+.edit-text * {
   margin: 5px;
 }
 
-.edit-text button
-{
+.edit-text button {
   width: 80px;
   height: 25px;
   border-radius: 10px;
@@ -201,25 +199,49 @@ body {
   color: white;
 }
 
-.edit-color *
-{
-  margin: 5px;
-}
+
 
 .edit-color {
   display: flex;
 }
 
-.SampleText
+.edit-color * {
+  margin: 5px;
+}
+
+.edit-color input
 {
+  border: none;
+  outline: none;
+  padding: 1px;
+  align-self: center;
+}
+
+
+
+.edit-sampleText
+{
+  font-size: 1.2rem;
+  width: 40px;
+  height: 40px;
+  background-color: #4b8aef;
+  border: none;
+  border-radius: 20px;
+  align-self: center;
+}
+.SampleText {
   font-size: 1.1rem;
   align-self: center;
 }
 
-.process-text-content
-{
+.process-text-content {
   font-size: 1.3rem;
   color: white;
   font-weight: 600;
 }
 
+input[type="color"]:focus {
+  outline: none;
+  background-color: #66ccff;
+  box-shadow: 0 0 6px rgba(102, 204, 255, 0.7);
+}
