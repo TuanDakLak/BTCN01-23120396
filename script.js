@@ -136,8 +136,14 @@ $("#btnHighlight").click(function () {
   let pattern = $("#textInput").val();
   if (!pattern) return;
 
-  let flags = "g";
+  let flags = "gi";
   let regex;
+
+  try {
+    regex = new RegExp(pattern, flags);
+  } catch (e) {
+    return;
+  }
 
   let color = $("#colorInput").val();
   let bgColor = $("#bgColorInput").val();
@@ -150,6 +156,10 @@ $("#btnHighlight").click(function () {
   let style = `style="color:${color}; background:${bgColor}; ${bold} ${italic} ${underline}"`;
 
   let currentHtml = $content.html();
+  currentHtml = currentHtml.replace(
+    /<span class="hl"[^>]*>(.*?)<\/span>/gi,
+    "$1"
+  );
   let newHtml = currentHtml.replace(regex, (match) => {
     return `<span class="hl" ${style}>${match}</span>`;
   });
@@ -165,9 +175,15 @@ $btnDelete.click(function () {
   let pattern = $("#textInput").val();
   if (!pattern) return;
 
-  let flags = "g";
+  let flags = "gi";
   let regex;
 
+  try {
+    regex = new RegExp(pattern, flags);
+  } catch (e) {
+    alert("Regex không hợp lệ!");
+    return;
+  }
   let currentHtml = $content.html();
   let newHtml = currentHtml.replace(regex, "");
 
