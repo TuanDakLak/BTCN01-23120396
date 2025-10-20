@@ -126,7 +126,6 @@ $(document).ready(function () {
     $sampleText.css("color", $colorInput.val());
   });
 
-  // Toggle bold style for sample text
   $boldChk.on("change", function () {
     $sampleText.css(
       "font-weight",
@@ -134,7 +133,7 @@ $(document).ready(function () {
     );
   });
 
-  // Toggle italic style for sample text
+
   $italicChk.on("change", function () {
     $sampleText.css(
       "font-style",
@@ -142,7 +141,6 @@ $(document).ready(function () {
     );
   });
 
-  // Toggle underline style for sample text
   $underlineChk.on("change", function () {
     $sampleText.css(
       "text-decoration",
