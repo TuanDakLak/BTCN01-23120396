@@ -136,17 +136,9 @@ $("#btnHighlight").click(function () {
   let pattern = $("#textInput").val();
   if (!pattern) return;
 
-  let flags = "gi";
+  let flags = "g";
   let regex;
 
-  try {
-    regex = new RegExp(pattern, flags);
-  } catch (e) {
-    alert("Regex không hợp lệ!");
-    return;
-  }
-
-  // Lấy style từ Sample
   let color = $("#colorInput").val();
   let bgColor = $("#bgColorInput").val();
   let bold = $("#boldChk").is(":checked") ? "font-weight:bold;" : "";
@@ -157,7 +149,8 @@ $("#btnHighlight").click(function () {
 
   let style = `style="color:${color}; background:${bgColor}; ${bold} ${italic} ${underline}"`;
 
-  let newHtml = originalText.replace(regex, (match) => {
+  let currentHtml = $content.html();
+  let newHtml = currentHtml.replace(regex, (match) => {
     return `<span class="hl" ${style}>${match}</span>`;
   });
 
@@ -166,4 +159,17 @@ $("#btnHighlight").click(function () {
 
 $("#btnReset").click(function () {
   $content.html(originalText);
+});
+
+$btnDelete.click(function () {
+  let pattern = $("#textInput").val();
+  if (!pattern) return;
+
+  let flags = "g";
+  let regex;
+
+  let currentHtml = $content.html();
+  let newHtml = currentHtml.replace(regex, "");
+
+  $content.html(newHtml);
 });
