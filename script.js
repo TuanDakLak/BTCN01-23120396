@@ -1,93 +1,101 @@
 const $newsBoxes = $(".news-box");
 
-  $newsBoxes.each(function() {
-    const $box = $(this);
-    const $toggleBtn = $box.find(".toggle");
+$newsBoxes.each(function () {
+  const $box = $(this);
+  const $toggleBtn = $box.find(".toggle");
 
-    $toggleBtn.on("click", function() {
-      const isOpen = $box.hasClass("open");
+  $toggleBtn.on("click", function () {
+    const isOpen = $box.hasClass("open");
 
-      if (isOpen) {
-        $box.removeClass("open").addClass("closed");
-        $toggleBtn.text("►");
-        $box.find(".news-content").hide();
-      } else {
-        $box.removeClass("closed").addClass("open");
-        $toggleBtn.text("↓");
-        $box.find(".news-content").show();
-      }
-    });
+    if (isOpen) {
+      $box.removeClass("open").addClass("closed");
+      $toggleBtn.text("►");
+      $box.find(".news-content").hide();
+    } else {
+      $box.removeClass("closed").addClass("open");
+      $toggleBtn.text("↓");
+      $box.find(".news-content").show();
+    }
   });
-  
+});
+
 //Drag And Drop
-const aside = document.querySelector(".sidebar");
-let draggingBox = null;
-let ghost = null;
-let swapTarget = null;
+const $aside = $(".sidebar");
+let $draggingBox = null;
+let $ghost = null;
+let $swapTarget = null;
 let offsetY = 0;
 
-aside.addEventListener("mousedown", (e) => {
-  const dragIcon = e.target.closest(".drag");
-  if (!dragIcon) return;
+$aside.on("mousedown", ".drag", function (e) {
+  const $dragIcon = $(this);
+  const $box = $dragIcon.closest(".news-box");
 
-  const box = dragIcon.closest(".news-box");
+  $draggingBox = $box;
 
-  draggingBox = box;
+  $ghost = $box.clone().addClass("ghost").appendTo("body");
 
-  ghost = box.cloneNode(true);
-  ghost.classList.add("ghost");
-  document.body.appendChild(ghost);
-
-  const rect = box.getBoundingClientRect();
+  const rect = $box[0].getBoundingClientRect();
   offsetY = e.pageY - rect.top;
 
-  ghost.style.width = rect.width + "px";
-  ghost.style.height = rect.height + "px";
-  ghost.style.left = rect.left + "px";
-  ghost.style.top = rect.top + "px";
+  $ghost.css({
+    width: rect.width + "px",
+    height: rect.height + "px",
+    left: rect.left + "px",
+    top: rect.top + "px",
+  });
 
-  document.addEventListener("mousemove", onMouseMove);
-  document.addEventListener("mouseup", onMouseUp);
+  $(document).on("mousemove", onMouseMove);
+  $(document).on("mouseup", onMouseUp);
 });
 
 function onMouseMove(e) {
-  ghost.style.top = e.pageY - offsetY + "px";
+  $ghost.css("top", e.pageY - offsetY + "px");
 
-  const boxes = [...aside.querySelectorAll(".news-box")];
-  let current = boxes.find((b) => {
-    const r = b.getBoundingClientRect();
-    return e.pageY > r.top && e.pageY < r.bottom && b !== draggingBox;
+  const $boxes = $(".news-box");
+  let $current = null;
+
+  $boxes.each(function () {
+    const $b = $(this);
+    const r = $b[0].getBoundingClientRect();
+
+    if (e.pageY > r.top && e.pageY < r.bottom && $b[0] !== $draggingBox[0]) {
+      $current = $b;
+      return false; // break loop
+    }
   });
 
-  if (swapTarget && current !== swapTarget) {
-    swapTarget.classList.remove("swap-target");
+  if ($swapTarget && $current[0] !== $swapTarget[0]) {
+    $swapTarget.removeClass("swap-target");
   }
-  if (current) {
-    current.classList.add("swap-target");
+
+  if ($current) {
+    $current.addClass("swap-target");
   }
-  swapTarget = current || null;
+
+  $swapTarget = $current || null;
 }
 
 function onMouseUp() {
-  if (swapTarget) {
-    const parent = draggingBox.parentElement;
-    const next = draggingBox.nextElementSibling;
+  if ($swapTarget) {
+    const $parent = $draggingBox.parent();
+    const $next = $draggingBox.next();
 
-    if (swapTarget === next) {
-      parent.insertBefore(swapTarget, draggingBox);
+    if ($swapTarget[0] === $next[0]) {
+      $parent.prepend($swapTarget);
     } else {
-      parent.insertBefore(draggingBox, swapTarget);
+      $parent.append($draggingBox);
     }
-    swapTarget.classList.remove("swap-target");
+
+    $swapTarget.removeClass("swap-target");
   }
 
-  ghost.remove();
-  ghost = null;
-  draggingBox = null;
-  swapTarget = null;
+  $ghost.remove();
+  $ghost = null;
+  $draggingBox = null;
+  $swapTarget = null;
 
-  document.removeEventListener("mousemove", onMouseMove);
-  document.removeEventListener("mouseup", onMouseUp);
+  $(document).off("mousemove", onMouseMove);
+  $(document).off("mouseup", onMouseUp);
 }
 
 $(document).ready(function () {
@@ -129,7 +137,6 @@ $(document).ready(function () {
       $boldChk.prop("checked") ? "bold" : "normal"
     );
   });
-
 
   $italicChk.on("change", function () {
     $sampleText.css(
