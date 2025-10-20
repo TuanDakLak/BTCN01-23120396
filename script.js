@@ -93,40 +93,60 @@ function onMouseUp() {
   document.removeEventListener("mouseup", onMouseUp);
 }
 
-const textInput = document.getElementById("textInput");
-const colorInput = document.getElementById("colorInput");
-const bgcolorInput = document.getElementById("bgColorInput");
-const sampleText = document.getElementById("sampleText");
-const btnHighlight = document.getElementById("btnHighlight");
-const btnDelete = document.getElementById("btnDelete");
+$(document).ready(function () {
+  const $textInput = $("#textInput");
+  const $colorInput = $("#colorInput");
+  const $bgcolorInput = $("#bgColorInput");
+  const $sampleText = $("#sampleText");
+  const $processContent = $(".process-content");
 
-const pop = document.getElementById("popup");
-// const editBtn = document.querySelector(".edit-sampleText");
-const boldChk = document.getElementById("boldChk");
-const italicChk = document.getElementById("italicChk");
-const underlineChk = document.getElementById("underlineChk");
-// const bgColorInput = document.getElementById("bgColor");
+  const $editBtn = $(".edit-sampleText");
+  const $btnHighlight = $("#btnHighlight");
+  const $btnDelete = $("#btnDelete");
+  const $btnReset = $("#btnReset");
 
-function popup() {
-  const pop = document.getElementById("popup");
-  if (pop.style.display === "none" || pop.style.display === "") {
-    pop.style.display = "block";
-  } else {
-    pop.style.display = "none";
+  const $pop = $("#popup");
+  const $boldChk = $("#boldChk");
+  const $italicChk = $("#italicChk");
+  const $underlineChk = $("#underlineChk");
+
+  function togglePopup() {
+    $pop.toggle();
   }
-}
 
-colorInput.addEventListener("input", () => {
-  sampleText.style.color = colorInput.value;
-});
+  $editBtn.on("click", togglePopup);
+  function togglePopup() {
+    $pop.toggle();
+  }
 
-boldChk.addEventListener("change", function () {
-  sampleText.style.fontWeight = boldChk.checked ? "bold" : "normal";
-});
+  $btnHighlight.on("click", togglePopup);
+  $btnDelete.on("click", togglePopup);
 
-italicChk.addEventListener("change", function () {
-  sampleText.style.fontStyle = italicChk.checked ? "italic" : "normal";
-});
-underlineChk.addEventListener("change", function () {
-  sampleText.style.textDecoration = underlineChk.checked ? "underline" : "none";
+  $colorInput.on("input", function () {
+    $sampleText.css("color", $colorInput.val());
+  });
+
+  // Toggle bold style for sample text
+  $boldChk.on("change", function () {
+    $sampleText.css(
+      "font-weight",
+      $boldChk.prop("checked") ? "bold" : "normal"
+    );
+  });
+
+  // Toggle italic style for sample text
+  $italicChk.on("change", function () {
+    $sampleText.css(
+      "font-style",
+      $italicChk.prop("checked") ? "italic" : "normal"
+    );
+  });
+
+  // Toggle underline style for sample text
+  $underlineChk.on("change", function () {
+    $sampleText.css(
+      "text-decoration",
+      $underlineChk.prop("checked") ? "underline" : "none"
+    );
+  });
 });
