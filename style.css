@@ -171,4 +171,8 @@ body {
   z-index: 999;
 }
 
+.news-box span
+{
+  user-select: none;
+}
 
