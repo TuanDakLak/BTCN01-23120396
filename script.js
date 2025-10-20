@@ -93,6 +93,20 @@ function onMouseUp() {
   document.removeEventListener("mouseup", onMouseUp);
 }
 
+const textInput = document.getElementById("textInput");
+const colorInput = document.getElementById("colorInput");
+const bgcolorInput = document.getElementById("bgColorInput");
+const sampleText = document.getElementById("sampleText");
+const btnHighlight = document.getElementById("btnHighlight");
+const btnDelete = document.getElementById("btnDelete");
+
+const pop = document.getElementById("popup");
+// const editBtn = document.querySelector(".edit-sampleText");
+const boldChk = document.getElementById("boldChk");
+const italicChk = document.getElementById("italicChk");
+const underlineChk = document.getElementById("underlineChk");
+// const bgColorInput = document.getElementById("bgColor");
+
 function popup() {
   const pop = document.getElementById("popup");
   if (pop.style.display === "none" || pop.style.display === "") {
@@ -102,13 +116,18 @@ function popup() {
   }
 }
 
-const textInput = document.getElementById("textInput");
-const colorInput = document.getElementById("colorInput");
-const bgcolorInput = document.getElementById("bgColorInput");
-const sampleText = document.getElementById("sampleText");
-const btnHighlight = document.getElementById("btnHighlight");
-const btnDelete = document.getElementById("btnDelete");
 
 colorInput.addEventListener("input", () => {
   sampleText.style.color = colorInput.value;
+});
+
+boldChk.addEventListener("change", function () {
+  sampleText.style.fontWeight = boldChk.checked ? "bold" : "normal";
+});
+
+italicChk.addEventListener("change", function () {
+  sampleText.style.fontStyle = italicChk.checked ? "italic" : "normal";
+});
+underlineChk.addEventListener("change", function () {
+  sampleText.style.textDecoration = underlineChk.checked ? "underline" : "none";
 });
