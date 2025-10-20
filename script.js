@@ -94,4 +94,13 @@ function onMouseUp() {
   document.removeEventListener("mouseup", onMouseUp);
 }
 
+const textInput = document.getElementById("textInput");
+const colorInput = document.getElementById("colorInput");
+const bgcolorInput = document.getElementById("bgColorInput")
+const sampleText = document.getElementById("sampleText");
+const btnHighlight = document.getElementById("btnHighlight");
+const btnDelete = document.getElementById("btnDelete");
 
+colorInput.addEventListener("input", () => {
+  sampleText.style.color = colorInput.value;
+});
