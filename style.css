@@ -113,7 +113,6 @@ body {
   margin-top: 5px;
   width: 1014px;
   height: 300%;
-  background-color: red;
 }
 .drag-drop {
   width: calc(100% - 266px);
@@ -171,8 +170,30 @@ body {
   z-index: 999;
 }
 
-.news-box span
-{
+.news-box span {
   user-select: none;
+}
+
+.process-text-header {
+  background: linear-gradient(to bottom, #c7daf0, #246cd8);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.edit-text {
+  display: flex;
+  justify-content: space-around;
+}
+
+.edit-color {
+  display: flex;
+}
+
+.process-text
+{
+  font-size: 1.3rem;
+  color: white;
+  font-weight: 600;
 }
 
